@@ -3,6 +3,8 @@ package ru.lunchVote.controllers;
 import org.springframework.web.bind.annotation.RestController;
 
 // Sweets
-@RestController
+//@RestController
 public class AdminController {
+
+
 }
