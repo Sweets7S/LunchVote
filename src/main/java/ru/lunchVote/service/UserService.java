@@ -8,11 +8,13 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
+
 // Sweets
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
+
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -30,6 +32,7 @@ public class UserService {
     }
 
     public User create(User user) {
+        user.setRole("USER");
         userRepository.save(user);
         return user;
     }
@@ -38,10 +41,7 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public void update(User user, int id) {
-        User tmp = getUser(id);
-        tmp.setLogin(user.getLogin());
-        tmp.setPassword(user.getPassword());
-        create(tmp);
+    public void update(User user) {
+        userRepository.save(user);
     }
 }

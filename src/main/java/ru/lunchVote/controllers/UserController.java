@@ -8,35 +8,36 @@ import java.util.List;
 
 // Sweets
 @RestController
+@RequestMapping("/users")
 public class UserController {
 
     private UserService userService;
 
-    public UserController(UserService us){
-        this.userService = us;
+    public UserController(UserService userService){
+        this.userService = userService;
     }
 
-    @GetMapping("users/{userId}")
+    @GetMapping("/{userId}")
     public User get(@PathVariable("userId") int userId){
         return userService.getUser(userId);
     }
 
-    @GetMapping("users")
+    @GetMapping("")
     public List<User> getAll(){
         return userService.getAllUsers();
     }
 
-    @PostMapping("users")
+    @PostMapping("")
     public User create(@RequestBody User user){
         return userService.create(user);
     }
 
-    @PutMapping("users")
+    @PatchMapping("")
     public void update(@RequestBody User user){
-        userService.update(user, user.getId());
+        userService.update(user);
     }
 
-    @DeleteMapping("users/{userId}")
+    @DeleteMapping("/{userId}")
     public void delete(@PathVariable("userId") int userId){
         userService.delete(userId);
     }

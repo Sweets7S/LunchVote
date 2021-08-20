@@ -1,5 +1,6 @@
 package ru.lunchVote.models;
 
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -8,23 +9,24 @@ import javax.persistence.*;
 @Entity
 @Table(name = "USERS")
 @ToString
+@NoArgsConstructor
 public class User {
-    public User(int id, String login, String password) {
-        this.id = id;
-        this.login = login;
-        this.password = password;
-    }
 
-    public User(){
-    }
+    public static final int START_SEQ = 100000;
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1, initialValue = START_SEQ)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")
     private int id;
+
     @Column(name = "LOGIN")
     private String login;
+
     @Column(name = "PASSWORD")
     private String password;
+
+    @Column(name = "ROLE")
+    private String role;
 
     public int getId() {
         return id;
@@ -48,5 +50,13 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
