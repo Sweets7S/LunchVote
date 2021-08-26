@@ -1,7 +1,6 @@
 package ru.lunchVote.service;
 
 // Sweets
-
 import org.springframework.stereotype.Service;
 import ru.lunchVote.models.Cafe;
 import ru.lunchVote.models.Menu;
@@ -10,8 +9,8 @@ import ru.lunchVote.repository.MenuRepository;
 @Service
 public class MenuService {
 
-    private MenuRepository menuRepository;
-    private CafeService cafeService;
+    private final MenuRepository menuRepository;
+    private final CafeService cafeService;
 
     public MenuService(MenuRepository menuRepository, CafeService cafeService){
         this.menuRepository = menuRepository;

@@ -22,7 +22,7 @@ public class Cafe {
     @Column(name = "NAME")
     private String name;
 
-    @Column(name = "MENUID")
+    @Column(name = "MENU_ID")
     private int menuId;
 
     public int getId() {
@@ -48,4 +48,5 @@ public class Cafe {
     public void setMenuId(int menuId) {
         this.menuId = menuId;
     }
+
 }
