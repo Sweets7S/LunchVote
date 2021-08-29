@@ -54,8 +54,9 @@ public class CafeService {
             vote.setTimeVote(LocalDateTime.of(2020, 8, 26, 10, 55, 45));
             vote.setId(100000);
             voteRepository.save(vote);
+        } else {
+            System.out.println("Позже 11");
+            //todo Доделать метод голосования
         }
-        System.out.println("Позже 11");
-        //todo Доделать метод голосования
     }
 }

@@ -1,5 +1,7 @@
 package ru.lunchVote.controllers;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import ru.lunchVote.models.Cafe;
 import ru.lunchVote.service.CafeService;
@@ -47,6 +49,9 @@ public class CafeController {
 
     @PatchMapping("/{cafeId}")
     public void voteCafe(@PathVariable int cafeId){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        System.out.println(username);
         cafeService.vote(cafeId);
     }
 }
