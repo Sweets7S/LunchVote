@@ -22,7 +22,7 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
-                .passwordEncoder(NoOpPasswordEncoder.getInstance())
+                .passwordEncoder(NoOpPasswordEncoder.getInstance()) // без шифрования
                 .usersByUsernameQuery("SELECT login, password, active FROM users WHERE login=?")
                 .authoritiesByUsernameQuery("SELECT login, role FROM users WHERE login=?");
     }
@@ -33,7 +33,7 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
                 .httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/cafe")
+                .antMatchers("/cafe/**")
                 .hasRole("USER")
                 .and()
                 .csrf().disable()

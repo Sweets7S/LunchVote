@@ -6,4 +6,6 @@ import ru.lunchVote.models.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
+
+    User findByLogin(String login);
 }

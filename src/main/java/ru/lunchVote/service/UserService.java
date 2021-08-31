@@ -14,6 +14,7 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+    private Object User;
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;

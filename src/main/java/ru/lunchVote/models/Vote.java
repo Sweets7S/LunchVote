@@ -4,7 +4,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 // Sweets
 @Entity
@@ -27,7 +27,7 @@ public class Vote {
     private int cafeID;
 
     @Column(name = "TIME_VOTE")
-    private LocalDateTime timeVote;
+    private LocalDate timeVote;
 
     public int getId() {
         return id;
@@ -53,11 +53,11 @@ public class Vote {
         this.cafeID = cafeID;
     }
 
-    public LocalDateTime getTimeVote() {
+    public LocalDate getTimeVote() {
         return timeVote;
     }
 
-    public void setTimeVote(LocalDateTime timeVote) {
+    public void setTimeVote(LocalDate timeVote) {
         this.timeVote = timeVote;
     }
 }

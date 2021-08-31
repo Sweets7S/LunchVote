@@ -4,9 +4,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import ru.lunchVote.models.Cafe;
+import ru.lunchVote.models.Vote;
 import ru.lunchVote.service.CafeService;
 
 import java.util.List;
+import java.util.Map;
 
 // Sweets
 @RestController
@@ -48,10 +50,13 @@ public class CafeController {
     }
 
     @PatchMapping("/{cafeId}")
-    public void voteCafe(@PathVariable int cafeId){
+    public Vote voteCafe(@PathVariable int cafeId){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        System.out.println(username);
-        cafeService.vote(cafeId);
+        return cafeService.vote(cafeId, authentication.getName());
+    }
+
+    @GetMapping("/votes")
+    public Map<Cafe, Integer> getResult(){
+        return cafeService.getResults();
     }
 }
