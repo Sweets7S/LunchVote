@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 // Sweets
@@ -62,7 +61,6 @@ public class CafeService {
     @Transactional
     public Vote vote(int cafeId, String login) {
         LocalDateTime localDateTime = LocalDateTime.now();
-        localDateTime = LocalDateTime.of(2020, 8, 31, 10, 55, 45);
 
         User user = null;
         user = userRepository.findByLogin(login);
