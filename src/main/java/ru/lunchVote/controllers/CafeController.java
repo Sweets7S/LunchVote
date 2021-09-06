@@ -39,9 +39,7 @@ public class CafeController {
 
     @PatchMapping("")
     public void updateMenu(@RequestBody Cafe cafe){
-        if (true) { //todo затычка на админа
-            cafeService.updateMenu(cafe);
-        }
+        cafeService.updateMenu(cafe);
     }
 
     @DeleteMapping("/{cafeId}")
@@ -49,13 +47,13 @@ public class CafeController {
         cafeService.delete(cafeId);
     }
 
-    @PatchMapping("/{cafeId}")
+    @PatchMapping("/vote/{cafeId}")
     public Vote voteCafe(@PathVariable int cafeId){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return cafeService.vote(cafeId, authentication.getName());
     }
 
-    @GetMapping("/votes")
+    @GetMapping("/vote")
     public Map<Cafe, Integer> getResult(){
         return cafeService.getResults();
     }

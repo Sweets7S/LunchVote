@@ -33,8 +33,8 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
                 .httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/cafe/**")
-                .hasRole("USER")
+                .antMatchers("/cafe/vote/**").hasRole("USER")
+                .antMatchers("/cafe/**", "/users/**").hasRole("ADMIN")
                 .and()
                 .csrf().disable()
                 .formLogin().disable(); // отключение логина для постмана
